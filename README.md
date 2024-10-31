@@ -1,7 +1,3 @@
-Creating a well-structured and informative README file is crucial for any project, as it serves as the first point of contact for users and contributors. Below is a sample README for your project:
-
----
-
 # Bookshelf Project
 
 Welcome to the Bookshelf Project! This application is built using Next.js v15 for the frontend and Supabase for the backend. It focuses on implementing CRUD operations while leveraging the advanced features of React Query. The primary aim is to bridge the gap between theoretical knowledge and real-world application development.
