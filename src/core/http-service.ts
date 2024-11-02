@@ -50,4 +50,17 @@ async function readData<T>(
   return await apiBase<T>(url, options);
 }
 
-export { readData };
+async function createData<TModel, TResult>(
+  url: string,
+  data: TModel,
+  headers?: RawAxiosRequestHeaders
+): Promise<TResult> {
+  const options: AxiosRequestConfig = {
+    method: "POST",
+    headers,
+    data: JSON.stringify(data),
+  };
+  return await apiBase<TResult>(url, options);
+}
+
+export { readData, createData };

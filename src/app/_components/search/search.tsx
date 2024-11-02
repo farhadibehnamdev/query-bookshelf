@@ -1,11 +1,10 @@
 "use client";
-import { Input } from "@nextui-org/react";
-import { SearchIcon } from "lucide-react";
+import { BookSearchItem } from "../book-search-item/book-search-item";
 
 export const Search = () => {
   return (
     <div className="  mb-10 gap-4">
-      <Input
+      {/* <Input
         type="email"
         placeholder="you@example.com"
         labelPlacement="outside"
@@ -14,7 +13,8 @@ export const Search = () => {
         endContent={
           <SearchIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
         }
-      />
+      /> */}
+      <BookSearchItem />
     </div>
   );
 };

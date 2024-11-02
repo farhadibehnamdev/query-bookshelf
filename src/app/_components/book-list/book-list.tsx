@@ -2,7 +2,7 @@
 import { Book, useBooksQuery } from "@/hooks/useBooksQuery";
 import { Card, CardBody, CardFooter, Image, Spinner } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-export const CardUI = () => {
+export const BookList = () => {
   const router = useRouter();
   const { data } = useBooksQuery();
   if (!data)
