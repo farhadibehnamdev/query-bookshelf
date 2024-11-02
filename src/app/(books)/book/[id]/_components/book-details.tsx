@@ -1,9 +1,7 @@
 "use client";
 
-import { BackgroundUpdate } from "@/app/_components/background-update";
+import { Checkout } from "@/app/_components/checkout/checkout";
 import { Rating } from "@/app/_components/rating/rating";
-import { StaleMessage } from "@/app/_components/stale-message";
-import { Uptodate } from "@/app/_components/uptodate";
 import { useBookDetailQuery } from "@/hooks/useBookDetailQuery";
 import { Button, Card, CardBody, Image, Spinner } from "@nextui-org/react";
 import { useParams } from "next/navigation";
@@ -33,13 +31,11 @@ export const BookDetailsContent = () => {
             <Button color="warning" className="rounded-lg" fullWidth size="lg">
               Check Out
             </Button>
-            {isFetching ? (
-              <BackgroundUpdate />
-            ) : isStale ? (
-              <StaleMessage refetch={refetch} />
-            ) : (
-              <Uptodate />
-            )}
+            <Checkout
+              refetch={refetch}
+              isStale={isStale}
+              isFetching={isFetching}
+            />
           </div>
 
           <p className="break-words text-wrap ">{item?.desc}</p>
