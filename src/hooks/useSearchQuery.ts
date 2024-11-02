@@ -11,7 +11,7 @@ const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const bookQuery = async (search: string, signal: AbortSignal) => {
   const url = `${API_URL}rpc/search_books`;
-  await sleep(1000);
+  await sleep(300);
   if (!signal.aborted) {
     const response = await createData<SearchTerm, Book[]>(
       url,

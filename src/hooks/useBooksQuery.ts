@@ -13,7 +13,7 @@ const getBooks = async () => {
   const headers: RawAxiosRequestHeaders = {
     Authorization: `Bearer ${API_KEY}`,
     apiKey: API_KEY,
-    // range: "0-9",
+    range: "0-9",
   };
   const res = await readData<Book[]>(url, headers);
   return res;
