@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import QueryProvider from "@/providers/react-query-provider";
 import Header from "./_components/header/header";
-import { Footer } from "./_components/footer/footer";
+import SidebarDrawer from "./_components/sidebar/sidebar-drawer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,13 +31,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} dark`}
     >
-      <body
-        className={`antialiased grid grid-rows-[20px_1fr_20px] items-center justify-items-center h-screen`}
-      >
+      <body className={`antialiased flex w-full`}>
         <QueryProvider>
-          <Header />
-          <main className="container">{children}</main>
-          <Footer />
+          <section className="hidden md:block h-screen sticky top-0">
+            <SidebarDrawer />
+          </section>
+          <section className="flex-1 flex flex-col min-h-screen">
+            <Header />
+            <main className="">{children}</main>
+          </section>
         </QueryProvider>
       </body>
     </html>
