@@ -1,19 +1,16 @@
 import { Select, SelectItem } from "@nextui-org/react";
 
-type languageType = {
+type BookFormat = {
   key: string;
   label: string;
 };
 
-const languages: languageType[] = [
-  { key: "English", label: "English" },
-  { key: "Spanish", label: "Spanish" },
-  { key: "French", label: "French" },
-  { key: "Persian", label: "Persian" },
-  { key: "Korean", label: "Korean" },
+const bookformates: BookFormat[] = [
+  { key: "Hardcover", label: "Hardcover" },
+  { key: "Paperback", label: "Paperback" },
 ];
 
-const SelectLanguage = () => {
+export const SelectBookformat = () => {
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
       <Select
@@ -23,7 +20,7 @@ const SelectLanguage = () => {
         labelPlacement="outside"
         placeholder="Select an language"
       >
-        {languages?.map((item: languageType) => (
+        {bookformates?.map((item: BookFormat) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
         ))}
       </Select>
@@ -31,4 +28,4 @@ const SelectLanguage = () => {
   );
 };
 
-export default SelectLanguage;
+export default SelectBookformat;
