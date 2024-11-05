@@ -1,6 +1,20 @@
-import { Slider } from "@nextui-org/react";
+import { Slider, SliderValue } from "@nextui-org/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const SliderRating = () => {
+  const { replace } = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const handleBooksRating = (value: SliderValue) => {
+    const term = value.toString();
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set("yr", term);
+    } else {
+      params.delete("yr");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  };
   return (
     <Slider
       size="md"
@@ -12,6 +26,7 @@ const SliderRating = () => {
       minValue={0}
       defaultValue={0}
       className="max-w-md"
+      onChange={(value: SliderValue) => handleBooksRating(value)}
     />
   );
 };
