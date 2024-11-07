@@ -15,10 +15,10 @@ export const SelectBookformat = () => {
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
       <Select
         variant="bordered"
-        label="Language"
+        label="Bookformat"
         className="max-w-xs"
         labelPlacement="outside"
-        placeholder="Select an language"
+        placeholder="Select an bookformat"
       >
         {bookformates?.map((item: BookFormat) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
