@@ -1,9 +1,10 @@
 "use client";
 
-import { Checkout } from "@/app/_components/checkout/checkout";
 import { Rating } from "@/app/_components/rating/rating";
 import { useBookDetailQuery } from "@/hooks/useBookDetailQuery";
-import { Button, Card, CardBody, Image, Spinner } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
+import { BookOpenCheck, Heart } from "lucide-react";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 export const BookDetailsContent = () => {
@@ -16,31 +17,46 @@ export const BookDetailsContent = () => {
   const [item] = data!;
 
   return (
-    <Card className="py-4 container text-white  w-1/2">
-      <CardBody className=" grid grid-cols-[auto_1fr] gap-5">
-        <Image alt="Card background" src={item?.img} />
-        <div className="pb-0 text-white flex flex-col justify-start items-start gap-3 ">
-          <h1 className="text-lg uppercase font-bold">{item?.title}</h1>
-          <small className="text-default-500">{item?.reviews}</small>
-          <p className="font-bold text-large justify-start items-center flex">
-            <Rating />
-            <Rating />
-            <Rating />
-          </p>
-          <div className="p-2 border-slate-500 w-full rounded-lg border-2">
-            <Button color="warning" className="rounded-lg" fullWidth size="lg">
-              Check Out
-            </Button>
-            <Checkout
-              refetch={refetch}
-              isStale={isStale}
-              isFetching={isFetching}
-            />
-          </div>
-
-          <p className="break-words text-wrap ">{item?.desc}</p>
+    <div className="container h-screen flex justify-center items-center gap-5 ">
+      <div className="p-5   ">
+        <Image
+          alt="Card background"
+          className="mb-5 p-2  bg-slate-300 border-1 shadow-xl border-gray-400  rounded-md"
+          src={item?.img}
+          priority
+          objectFit="cover"
+          width={300}
+          height={300}
+        />
+        <div className="flex flex-col gap-5 ">
+          <Button
+            color="danger"
+            variant="solid"
+            startContent={<BookOpenCheck size={18} />}
+          >
+            Read Online
+          </Button>
+          <Button
+            color="warning"
+            variant="solid"
+            startContent={<Heart size={18} />}
+          >
+            Favourit Book
+          </Button>
         </div>
-      </CardBody>
-    </Card>
+      </div>
+
+      <div className="pb-0 text-white flex flex-col flex-1 justify-start items-start gap-3 ">
+        <h1 className="text-lg uppercase font-bold">{item?.title}</h1>
+        <div className="flex justify-center items-center text-center">
+          <div className="font-bold text-large justify-start items-center flex">
+            <Rating />
+          </div>
+          <small className="text-default-500">{item?.reviews}</small>
+        </div>
+
+        <p className="break-words text-wrap ">{item?.desc}</p>
+      </div>
+    </div>
   );
 };
